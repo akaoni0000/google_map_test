@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require underscore    //なくていい
+//= require underscore
 //= require gmaps/google
 //= require activestorage
 //= require turbolinks

@@ -5,7 +5,13 @@ class HomeController < ApplicationController
     end
 
     def create
-        @hotel.new(hotel_params)
+        @hotel = Hotel.new(hotel_params)
         @hotel.save
+        redirect_to root_path
+    end
+
+    private
+    def hotel_params
+        params.require(:hotel).permit(:address)
     end
 end

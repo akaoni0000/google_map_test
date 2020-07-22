@@ -18,3 +18,8 @@
     handler.getMap().setZoom(16);
   });
 </script>
+
+<%= form_for(@hotel) do |f| %>
+    <%= f.text_field :address %>
+    <%= f.submit "登録" %>
+<%end %>
