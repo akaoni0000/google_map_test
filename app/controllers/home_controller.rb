@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
     def top
         @hotel = Hotel.new
+        
     end
 
     def create
