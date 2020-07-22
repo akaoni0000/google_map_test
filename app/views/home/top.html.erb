@@ -8,8 +8,8 @@
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers([
       {
-        "lat": 35.444991, //緯度
-        "lng": 139.636768, //経度
+        "lat": "<%= @lat %>", //緯度
+        "lng": "<%= @lng %>", //経度
         "infowindow": "テックキャンプ渋谷オフィス"
       }
     ]);
@@ -26,3 +26,5 @@
 
 <div class="btn" style="cursor: pointer;">確かめる</div>
 <div class="btn2" style="cursor: pointer;">確かめる</div>
+<div class="btn3" style="cursor: pointer;">確かめる</div>
+<%= @distance %>キロ
