@@ -201,7 +201,8 @@ function getLatLng(place) {
   }
 
   $(".btn3").click(function(){
-	getLatLng("埼玉県三条町")
+	getLatLng("神奈川県横浜市港北区下田町5-8-76")
+	getLatLng("埼玉県川口市")
   });
 
 });
