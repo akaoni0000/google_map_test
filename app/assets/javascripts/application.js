@@ -52,11 +52,11 @@ if( navigator.geolocation )
 			// データの整理
 			var lat = data.latitude ;
 			var lng = data.longitude ;
-			var alt = data.altitude ;
-			var accLatlng = data.accuracy ;
-			var accAlt = data.altitudeAccuracy ;
-			var heading = data.heading ;			//0=北,90=東,180=南,270=西
-			var speed = data.speed ;
+			// var alt = data.altitude ;
+			// var accLatlng = data.accuracy ;
+			// var accAlt = data.altitudeAccuracy ;
+			// var heading = data.heading ;			//0=北,90=東,180=南,270=西
+			// var speed = data.speed ;
 
 			// アラート表示
 			alert( "あなたの現在位置は、\n[" + lat + "," + lng + "]\nです。" ) ;
@@ -65,19 +65,19 @@ if( navigator.geolocation )
 			//document.getElementById( '.btn2' ).innerHTML = '<dl><dt>緯度</dt><dd>' + lat + '</dd><dt>経度</dt><dd>' + lng + '</dd><dt>高度</dt><dd>' + alt + '</dd><dt>緯度、経度の精度</dt><dd>' + accLatlng + '</dd><dt>高度の精度</dt><dd>' + accAlt + '</dd><dt>方角</dt><dd>' + heading + '</dd><dt>速度</dt><dd>' + speed + '</dd></dl>' ;
 
 			// 位置情報
-			var latlng = new google.maps.LatLng( lat , lng ) ;
+			//var latlng = new google.maps.LatLng( lat , lng ) ;
 
 			// Google Mapsに書き出し
-			var map = new google.maps.Map( document.getElementById( 'map-canvas' ) , {
-				zoom: 15 ,				// ズーム値
-				center: latlng ,		// 中心座標 [latlng]
-			} ) ;
+			// var map = new google.maps.Map( document.getElementById( 'map-canvas' ) , {
+			// 	zoom: 15 ,				// ズーム値
+			// 	center: latlng ,		// 中心座標 [latlng]
+			// } ) ;
 
 			// マーカーの新規出力
-			new google.maps.Marker( {
-				map: map ,
-				position: latlng ,
-			} ) ;
+			// new google.maps.Marker( {
+			// 	map: map ,
+			// 	position: latlng ,
+			// } ) ;
 		},
 
 		// [第2引数] 取得に失敗した場合の関数
@@ -152,35 +152,38 @@ function getLatLng(place) {
 	  address: place
 	}, function(results, status) {
 	  if (status == google.maps.GeocoderStatus.OK) {
+		console.log(results)
   
 		// 結果の表示範囲。結果が１つとは限らないので、LatLngBoundsで用意。
-		var bounds = new google.maps.LatLngBounds();
+		//var bounds = new google.maps.LatLngBounds();
   
-		for (var i in results) {
-		  if (results[i].geometry) {
+		//for (var i in results) {
+		  //if (results[i].geometry) {
   
 			// 緯度経度を取得
-			var latlng = results[i].geometry.location;
-  
+			//var latlng = results[i].geometry.location;
+			var latlng = results[0].geometry.location;
+
 			// 住所を取得(日本の場合だけ「日本, 」を削除)
-			var address = results[0].formatted_address.replace(/^日本, /, '');
+			//var address = results[0].formatted_address.replace(/^日本, /, '');
   
 			// 検索結果地が含まれるように範囲を拡大
-			bounds.extend(latlng);
+			//bounds.extend(latlng);
   
 			// あとはご自由に・・・。
-			new google.maps.InfoWindow({
-			  content: address + "<br>(Lat, Lng) = " + latlng.toString()
-			}).open(map, new google.maps.Marker({
-			  position: latlng,
-			  map: map
-			}));
+			// new google.maps.InfoWindow({
+			//   content: address + "<br>(Lat, Lng) = " + latlng.toString()
+			// }).open(map, new google.maps.Marker({
+			//   position: latlng,
+			//   map: map
+			// }));
 			alert(latlng);
-		  }
-		}
+			
+		  //}
+		//}
   
 		// 範囲を移動
-		map.fitBounds(bounds);
+		//map.fitBounds(bounds);
   
 	  } else if (status == google.maps.GeocoderStatus.ERROR) {
 		alert("サーバとの通信時に何らかのエラーが発生！");
@@ -202,7 +205,9 @@ function getLatLng(place) {
 
   $(".btn3").click(function(){
 	getLatLng("神奈川県横浜市港北区下田町5-8-76")
-	getLatLng("埼玉県川口市")
+	getLatLng("神奈川県横浜市港北区下田町323-33-33")
+	getLatLng("fasfkakfjasif")  //見つからない時は "見つかりません"
+	getLatLng("北海道")
   });
 
 });

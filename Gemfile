@@ -71,3 +71,5 @@ gem 'jquery-rails'
 gem 'geocoder'
 
 gem 'geokit-rails'
+
+gem 'dotenv-rails'

@@ -15,12 +15,44 @@ javascriptで
 
 underscore.jsを書く
 
+<h1>google map</h1>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+      {
+        "lat": "<%= @lat %>", //緯度
+        "lng": "<%= @lng %>", //経度
+        "infowindow": "テックキャンプ渋谷オフィス"
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(16);
+  });
+</script>
+
 
 
 
 
 文字列の住所を緯度経度に換算
 gem 'geocoder'
+
+rbファイルに
+class Hotel < ApplicationRecord
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
+    #addressが保存されたり変更されたら緯度経度を保存する
+    # acts_as_mappable
+end
+apiを使った時は自動で保存されなかった
+apiではjsで正確な緯度経度をだしてくれる
+
 
 設定ファイルを作成
 rails generate geocoder:config 
@@ -37,7 +69,7 @@ create_table "hotels", force: :cascade do |t|
 
 現在地の取得
 https://syncer.jp/how-to-use-geolocation-api
-
+jsに書いてある
 
 経度緯度から2点の距離
  module GetDistance
@@ -134,3 +166,5 @@ Geocoder.configure(
 
 apiキーの設定でhttpリファラーしなくてもしてもできた
 
+
+ssl化けしないと現在地は取得できない
