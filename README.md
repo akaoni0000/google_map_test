@@ -64,26 +64,27 @@ application.jsに以下を追加<br>
 underscore.jsを記述 ファイル参照<br>
 
 viewを記述<br>
-<h1>google map</h1>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
-
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-        "lat": "<%= @lat %>", //緯度
-        "lng": "<%= @lng %>", //経度
-        "infowindow": "渋谷"
-      }
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(16);
-  });
-</script>
+```
+  <h1>google map</h1>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+  <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": "<%= @lat %>", //緯度
+          "lng": "<%= @lng %>", //経度
+          "infowindow": "渋谷"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(16);
+    });
+  </script>
+```
 
 
 ## 文字列の住所を緯度経度に換算 apiを使用しないとき (精度低い)
@@ -91,22 +92,25 @@ viewを記述<br>
 `bundle install`<br>
 
 カラムを追加<br>
-create_table "hotels", force: :cascade do |t|
-    t.string "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "latitude"  #ここの英語は変えてはけない
-    t.float "longitude"　#ここの英語は変えてはけない
-end<br>
+```
+  create_table "hotels", force: :cascade do |t|
+      t.string "address"
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
+      t.float "latitude"  #ここの英語は変えてはけない
+      t.float "longitude"　#ここの英語は変えてはけない
+  end
+```
 
 モデル.rbファイルに以下を記述<br>
-class Hotel < ApplicationRecord
-  geocoded_by :address  #カラム名
-  after_validation :geocode, if: :address_changed?
-  #addressが保存されたり変更されたら緯度経度を保存する
-     # acts_as_mappable
-end
-<br>
+```
+  class Hotel < ApplicationRecord
+    geocoded_by :address  #カラム名
+    after_validation :geocode, if: :address_changed?
+    #addressが保存されたり変更されたら緯度経度を保存する
+      # acts_as_mappable
+  end
+```
 
 apiを使った時は自動で保存されない<br>
 apiではjsで正確な緯度経度をだしてくれる<br>
