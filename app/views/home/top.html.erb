@@ -1,30 +1,35 @@
-<h1>google map</h1>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div style="text-align: center;">
+
+    <h1>google map</h1>
+    <div style="text-align: center">
+        <div id="map" style='width: 800px; height: 400px; display: inline-block;'></div>
+    </div>
+
+    <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers([
+            {
+            "lat": "<%=@lat%>", //緯度
+            "lng": "<%=@lng%>", //経度
+            "infowindow": "あなたが登録した場所"
+            }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(16);
+        });
+    </script>
+
+    <%= form_for(@hotel) do |f| %>
+        <%= f.text_field :address %>
+        <%= f.submit "登録" %>
+    <% end %>
+
+    <div class="btn" style="cursor: pointer; margin-top: 100px;">現在地が取得できるかどうかを表示(クリック)</div>
+    <div class="btn2" style="cursor: pointer;">現在地の緯度経度を表示(クリック)</div>
+    <div class="btn3" style="cursor: pointer;">application.jsから住所の文字列を記入してその住所の緯度経度を表示(クリック)</div>
+    <p>ここにはhomes_controller.rbのtopアクションで指定した2点間の距離を表示しています。</p>
+    <%= @distance %>キロ
+
 </div>
-
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-        "lat": "35.5594994", //緯度
-        "lng": "139.6311827", //経度
-        "infowindow": "テックキャンプ渋谷オフィス"
-      }
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(16);
-  });
-</script>
-
-<%= form_for(@hotel) do |f| %>
-    <%= f.text_field :address %>
-    <%= f.submit "登録" %>
-<%end %>
-
-<div class="btn" style="cursor: pointer;">確かめる</div>
-<div class="btn2" style="cursor: pointer;">確かめる</div>
-<div class="btn3" style="cursor: pointer;">確かめる</div>
-<%= @distance %>キロ

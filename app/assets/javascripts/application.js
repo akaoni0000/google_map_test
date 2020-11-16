@@ -21,7 +21,7 @@
 $(function() {
   $(".btn").click(function(){
       // Geolocation APIに対応している
-if( navigator.geolocation )
+if( navigator.geolocation ) // Geolocation APIに対応している
 {
 	// 現在位置を取得できる場合の処理
 	alert( "あなたの端末では、現在位置を取得することができます。" ) ;
@@ -136,8 +136,12 @@ else
    
   })
 });
-  
 
+
+
+
+
+//住所の文字列から緯度経度を生成  精度高い 
 $(function() {
 
 function getLatLng(place) {
@@ -204,8 +208,8 @@ function getLatLng(place) {
   }
 
   $(".btn3").click(function(){
-	getLatLng("神奈川県横浜市港北区下田町5-8-76")
-	getLatLng("神奈川県横浜市港北区下田町323-33-33")
+	getLatLng("神奈川県横浜市")
+	getLatLng("神奈川県横浜市")
 	getLatLng("fasfkakfjasif")  //見つからない時は "見つかりません"
 	getLatLng("北海道")
   });

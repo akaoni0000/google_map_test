@@ -2,7 +2,6 @@ class HomeController < ApplicationController
 
     module GetDistance
 
-
         def self.distance(lat1, lng1, lat2, lng2)
           # ラジアン単位に変換
           x1 = lat1.to_f * Math::PI / 180
@@ -37,12 +36,20 @@ class HomeController < ApplicationController
     def top
         @hotel = Hotel.new
         #Hotel.within(5, origin: [33.33, 140.33])
-        @hotels = Hotel
         @hot = Hotel.last
-        @lat = @hot.latitude
-        @lng = @hot.longitude
+        if @hot.blank?
+            @lat = 35
+            @lng = 139
+        else
+            @lat = @hot.latitude
+            @lng = @hot.longitude
+        end
+        # @lat = @hot.latitude
+        # @lng = @hot.longitude
         #Hotel.find(3).(:all, :origin =>[35.339297,136.055422], :within=>10) 
         #Hotel.in_range(2..5, origin: [33.33, 140.33]) 
+
+        #このようにして２点間の距離もだせる
         lat1 = 35.444991 #緯度
         lng1 = 139.636768 #経度
         lat2 = 35.523142
