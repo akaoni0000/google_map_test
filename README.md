@@ -45,7 +45,7 @@ googlemap APIを取得してないのでエラーがでます。もしgoolemap�
 google apiを取得<br>
 参考記事・・・https://qiita.com/tiara/items/4a1c98418917a0e74cbb<br>
 
-gem 'gmaps4rails'<br>
+`gem 'gmaps4rails'`<br>
 `bundle install`<br>
 
 application.htmlのheaderに以下を追加<br>
@@ -57,7 +57,7 @@ application.htmlのheaderに以下を追加<br>
 
 <br>
 application.jsに以下を追加<br>
-//= require gmaps/google<br>
+`//= require gmaps/google`<br>
 
 underscore.jsを記述 ファイル参照<br>
 
@@ -85,7 +85,7 @@ viewを記述<br>
 
 
 ## 文字列の住所を緯度経度に換算 apiを使用しないとき (精度低い)
-gem 'geocoder'<br>
+`gem 'geocoder'`<br>
 `bundle install`<br>
 
 カラムを追加<br>
@@ -111,21 +111,25 @@ apiではjsで正確な緯度経度をだしてくれる<br>
 
 
 ## 文字列の住所を緯度経度に換算 apiを使用するとき (精度高い)
-gem 'geocoder'<br>
+`gem 'geocoder'`<br>
 `bundle install`<br>
 
 カラムを追加<br>
+```
 create_table "hotels", force: :cascade do |t|
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"  #ここの英語は変えてはけない
     t.float "longitude"　#ここの英語は変えてはけない
-end<br>
+end
+```
 
 Geocoding APIを取得<br>
 application.htmlに以下を追加
+```
 <script src="//maps.google.com/maps/api/js?v=3.23&key=公開鍵"></script>
+```
 
 設定ファイルを作成<br>
 `rails generate geocoder:config`<br>
@@ -135,8 +139,8 @@ geocoder.rbが作成される<br>
 これでaddressを保存したとき自動でlatitudeに緯度　longitudeに経度が保存される<br>
 
 ## 現在地の取得
-参考・・・https://syncer.jp/how-to-use-geolocation-api
-application.jsを見る
+参考・・・https://syncer.jp/how-to-use-geolocation-api<br>
+application.jsのファイルを参照
 
 
 ## 経度緯度から2点の距離をだす
