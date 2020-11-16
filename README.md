@@ -62,27 +62,29 @@ application.jsに以下を追加<br>
 
 underscore.jsを記述 ファイル参照<br>
 
-viewを記述<br>
-<h1>google map</h1>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+viewを記述
+```
+  <h1>google map</h1>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
 
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-        "lat": "<%= @lat %>", //緯度
-        "lng": "<%= @lng %>", //経度
-        "infowindow": "渋谷"
-      }
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(16);
-  });
-</script>
+  <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": "<%= @lat %>", //緯度
+          "lng": "<%= @lng %>", //経度
+          "infowindow": "渋谷"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(16);
+    });
+  </script>
+```
 
 
 ## 文字列の住所を緯度経度に換算 apiを使用しないとき (精度低い)
