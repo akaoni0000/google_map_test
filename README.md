@@ -50,9 +50,9 @@ gem 'gmaps4rails'<br>
 
 application.htmlのheaderに以下を追加<br>
 `
-<script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyDZ_fP_4giVC4eWpMH6I_zaYZk9DC1SEY8"></script>
-<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
+  <script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyDZ_fP_4giVC4eWpMH6I_zaYZk9DC1SEY8"></script>
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
 `
 
 <br>
@@ -140,7 +140,8 @@ application.jsを見る
 
 
 ## 経度緯度から2点の距離をだす
- module GetDistance
+```
+module GetDistance
     def self.distance(lat1, lng1, lat2, lng2)
           # ラジアン単位に変換
           x1 = lat1.to_f * Math::PI / 180
@@ -169,15 +170,17 @@ application.jsを見る
           # 大円距離 (km)
           degree * radius
     end 
-  end
+end
 
-  def top
+def top
     lat1 = 35.444991 #緯度
     lng1 = 139.636768 #経度
     lat2 = 35.523142
     lng2 = 139.708024
     @distance = GetDistance.distance(lat1, lng1, lat2, lng2).round(2)
-  end
+end
+
+```
     
 ## apiキーの作成
 https://console.cloud.google.com/google/maps-apis/credentials<br>
