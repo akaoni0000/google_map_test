@@ -55,15 +55,14 @@ application.htmlのheaderに以下を追加<br>
   <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
 ```
 
-<br>
 application.jsに以下を追加<br>
 ```
-  //= require gmaps/google
+//= require gmaps/google
 ```
 
 underscore.jsを記述 ファイル参照<br>
 
-viewを記述<br>
+viewを記述
 ```
   <h1>google map</h1>
   <div style='width: 800px;'>
@@ -87,7 +86,7 @@ viewを記述<br>
 ```
 
 
-## 文字列の住所を緯度経度に換算 apiを使用しないとき (精度低い)
+## 文字列の住所を緯度経度に換算する方法 apiを使用しないとき (精度低い)
 `gem 'geocoder'`<br>
 `bundle install`<br>
 
@@ -116,7 +115,7 @@ apiを使った時は自動で保存されない<br>
 apiではjsで正確な緯度経度をだしてくれる<br>
 
 
-## 文字列の住所を緯度経度に換算 apiを使用するとき (精度高い)
+## 文字列の住所を緯度経度に換算する方法 apiを使用するとき (精度高い)
 `gem 'geocoder'`<br>
 `bundle install`<br>
 
@@ -149,7 +148,7 @@ geocoder.rbが作成される<br>
 application.jsのファイルを参照
 
 
-## 経度緯度から2点の距離をだす
+## 2点の経度緯度から距離をだす
 ```
 module GetDistance
     def self.distance(lat1, lng1, lat2, lng2)
