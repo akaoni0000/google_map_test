@@ -58,7 +58,8 @@ application.htmlのheaderに以下を追加<br>
 <br>
 application.jsに以下を追加<br>
 ```
-     //= require gmaps/google
+   これを追加
+   //= require gmaps/google
 ```
 
 underscore.jsを記述 ファイル参照<br>
