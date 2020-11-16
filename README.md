@@ -55,11 +55,9 @@ application.htmlのheaderに以下を追加<br>
   <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
 ```
 
-<br>
 application.jsに以下を追加<br>
 ```
-   これを追加
-   //= require gmaps/google
+//= require gmaps/google
 ```
 
 underscore.jsを記述 ファイル参照<br>
