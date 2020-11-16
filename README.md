@@ -1,9 +1,49 @@
 ## 概要
 googlemapを使った練習用のアプリです。
 
+## バージョン
+ruby・・・2.5.7<br>
+rails・・・5.2.4.4<br>
+nginx・・・1.19.3<br>
+mysql・・・5.7
+
+## ローカル環境での実行手順
+dockerとdocker-composeを自分のpcにインストール
+
+好きなディレクトリで<br>
+`git clone https://github.com/Mac0917/googlemap.git`
+
+移動<br>
+`cd googlemap`
+
+docker-composeを実行<br>
+`docker-compose up -d`
+
+データベース作成<br>
+`docker exec -it goolemap_app_1 bash`(コンテナに入る)<br>
+`rails db:create`<br>
+`rails db:migrate`<br>
+
+アクセス<br>
+http://localhost/<br>
+googlemap APIを取得してないのでエラーがでます。もしgoolemapを表示したいのならコラムを読んで実装してみてください。
+
+
+
+終了<br>
+`exit`(コンテナから出る)<br>
+`docker-compose stop`<br>
+`docker-compose rm`<br>
+`docker rmi googlemap-advance_app googlemap-advance_web`<br>
+`docker volume rm googlemap_db-data googlemap_public-data googlemap_tmp-data`
+
+リポジトリを削除<br>
+`cd ..`<br>
+`rm -rf googlemap`
+
 ## googlemapを表示させるまで
 google apiを取得<br>
-https://qiita.com/tiara/items/4a1c98418917a0e74cbb<br>
+参考記事・・・https://qiita.com/tiara/items/4a1c98418917a0e74cbb<br>
 
 gem 'gmaps4rails'<br>
 `bundle install`<br>
@@ -99,7 +139,6 @@ application.jsを見る
 
 ## 経度緯度から2点の距離をだす
  module GetDistance
-
     def self.distance(lat1, lng1, lat2, lng2)
           # ラジアン単位に変換
           x1 = lat1.to_f * Math::PI / 180
@@ -128,7 +167,6 @@ application.jsを見る
           # 大円距離 (km)
           degree * radius
     end 
-
   end
 
   def top
@@ -147,5 +185,5 @@ https://console.cloud.google.com/google/maps-apis/credentials<br>
 
 
 ## 追記
-apiキーの設定でhttpリファラーしなくてもしてもできた
+apiキーの設定でhttpリファラーしなくてもしてもできた<br>
 本番環境ではssl化しないと現在地は取得できない
