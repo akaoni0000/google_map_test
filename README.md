@@ -26,7 +26,7 @@ docker-composeを実行<br>
 
 アクセス<br>
 http://localhost/<br>
-googlemap APIを取得してないのでエラーがでます。もしgoolemapを表示したいのならコラムを読んで実装してみてください。
+googlemap APIを取得してないのでエラーがでます。もしgoolemapを表示したいのなら下の見出しを読んで実装してみてください。
 
 
 
@@ -49,9 +49,11 @@ gem 'gmaps4rails'<br>
 `bundle install`<br>
 
 application.htmlのheaderに以下を追加<br>
+`
 <script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyDZ_fP_4giVC4eWpMH6I_zaYZk9DC1SEY8"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
+`
 
 <br>
 application.jsに以下を追加<br>
@@ -82,7 +84,7 @@ viewを記述<br>
 </script>
 
 
-## 文字列の住所を緯度経度に換算 apiを使用しないとき 精度低い
+## 文字列の住所を緯度経度に換算 apiを使用しないとき (精度低い)
 gem 'geocoder'<br>
 `bundle install`<br>
 
@@ -108,7 +110,7 @@ apiを使った時は自動で保存されない<br>
 apiではjsで正確な緯度経度をだしてくれる<br>
 
 
-## 文字列の住所を緯度経度に換算 apiを使用するとき 精度高い
+## 文字列の住所を緯度経度に換算 apiを使用するとき (精度高い)
 gem 'geocoder'<br>
 `bundle install`<br>
 
