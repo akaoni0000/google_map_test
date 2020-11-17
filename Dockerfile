@@ -12,6 +12,8 @@ COPY Gemfile.lock /googlemap/Gemfile.lock
 # bundle installの実行
 RUN bundle install
 
+RUN rm -rf tmp/pids
+
 # ホストのアプリケーションディレクトリ内をすべてコンテナにコピー
 COPY . /googlemap
 

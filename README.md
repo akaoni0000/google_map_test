@@ -28,8 +28,6 @@ docker-composeを実行<br>
 http://localhost/<br>
 googlemap APIを取得してないのでエラーがでます。もしgoolemapを表示したいのなら下の見出しを読んで実装してみてください。
 
-
-
 終了<br>
 `exit`(コンテナから出る)<br>
 `docker-compose stop`<br>
