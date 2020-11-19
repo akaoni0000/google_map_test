@@ -48,7 +48,7 @@ google apiを取得<br>
 
 application.htmlのheaderに以下を追加<br>
 ```
-  <script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyDZ_fP_4giVC4eWpMH6I_zaYZk9DC1SEY8"></script>
+  <script src="//maps.google.com/maps/api/js?v=3.23&key=公開鍵"></script>
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
   <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> 
 ```
